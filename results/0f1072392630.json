@@ -1,0 +1,9 @@
+{
+  "id": "0f1072392630",
+  "success": false,
+  "error_code": "JOB_SUBMIT_FAILED",
+  "error": "ipc_CONNECTION_BROKEN",
+  "traceback": "Traceback (most recent call last):\n  File \"D:\\pythonProject\\abaqus-mcp\\abaqus_plugin\\job_manager.py\", line 118, in submit_job\n    job.waitForCompletion()\n<unknown>.AbaqusException: ipc_CONNECTION_BROKEN\n",
+  "data": null,
+  "output": ""
+}

@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "abaqus-mcp": {
+      "command": "python",
+      "args": ["C:/path/to/abaqus-mcp/mcp_server.py"],
+      "env": {
+        "ABAQUS_MCP_HOME": "C:/path/to/your/working/directory"
+      }
+    }
+  }
+}
