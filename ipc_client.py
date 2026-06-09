@@ -14,7 +14,7 @@ from pathlib import Path
 from ipc_shared import (
     COMMANDS_DIR, RESULTS_DIR, STATUS_FILE,
     CMD_PREFIX, DEFAULT_TIMEOUT, STALE_CMD_AGE,
-    ErrorCode, err_response
+    ErrorCode, err_response, CmdType
 )
 
 
@@ -150,7 +150,8 @@ def check_plugin_alive(ping_timeout: float = 10.0) -> tuple[bool, str]:
         )
 
     # 发 ping 验证实际响应
-    result = send_command("ping", timeout=ping_timeout)
+    result = send_command(CmdType.PING, timeout=ping_timeout)
+    print(result)
     if result.get("success"):
         ver = (result.get("data") or {}).get("version", "?")
         return True, f"Connected. Plugin v{ver} | uptime={status.get('uptime_s', '?')}s"

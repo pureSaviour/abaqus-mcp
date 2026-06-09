@@ -273,7 +273,8 @@ def mcp_coop_loop(interval: float = POLL_INTERVAL) -> None:
 
             if has_session:
                 try:
-                    session.processUpdates()
+                    vp_name = session.currentViewportName
+                    session.viewports[vp_name].forceRefresh()
                 except Exception:
                     pass
 
@@ -343,7 +344,6 @@ def _self_test(timeout: float = 2.0) -> None:
     """发一条 ping 给自己，验证后台线程确实在消费命令文件。"""
     import uuid, json
     from ipc_shared import COMMANDS_DIR, RESULTS_DIR, CMD_PREFIX
-
     test_id  = "selftest_" + uuid.uuid4().hex[:8]
     cmd_path = COMMANDS_DIR / f"{CMD_PREFIX}{test_id}.json"
     res_path = RESULTS_DIR  / f"{test_id}.json"
